@@ -60,7 +60,7 @@ async function carregarPresentes() {
 
   try {
     const resposta = await fetch(
-      ${SUPABASE_URL}/rest/v1/presentes?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado&order=id.asc,
+     ${SUPABASE_URL}/rest/v1/presentes?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado&order=id.asc,
       {
         headers: {
           apikey: SUPABASE_KEY
