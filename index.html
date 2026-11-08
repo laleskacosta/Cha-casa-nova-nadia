@@ -222,7 +222,7 @@ async function carregarPresentes() {
   try {
     const url = SUPABASE_URL +
       "/rest/v1/presentes" +
-      "?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado" +
+     "?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado" +
       "&order=id.asc";
 
     const resposta = await fetch(url, {
@@ -281,7 +281,7 @@ function criarCartao(presente) {
 
   const categoria = document.createElement("div");
   categoria.className = "category";
-  categoria.textContent = presente.categoria || "Presente";
+  categoria.textContent = presente.timpano || "Presente";
 
   const nome = document.createElement("h3");
   nome.textContent = presente.nome || "Presente";
