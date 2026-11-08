@@ -1,90 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chá de Casa Nova da Nádia</title>
-<style>
-:root{--sage:#789382;--deep:#405e4d;--blush:#f5dfe2;--cream:#fffaf6;--ink:#35463c}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:var(--ink)}
-header{text-align:center;padding:65px 18px 55px;background:linear-gradient(145deg,#e3ede5,#f8e6e8)}
-.eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:12px}
-h1{font-family:Georgia,serif;font-size:clamp(40px,8vw,70px);font-weight:normal;margin:16px 0;color:var(--deep)}
-header p{max-width:550px;margin:auto;line-height:1.7}
-main{max-width:1040px;margin:auto;padding:42px 20px}
-h2{text-align:center;font-family:Georgia,serif;font-weight:normal;font-size:32px}
-.sub{text-align:center;line-height:1.6;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:22px}
-.card{background:white;border:1px solid #e5e9e2;border-radius:18px;overflow:hidden;box-shadow:0 8px 28px #405e4d0d}
-.photo{height:190px;background:linear-gradient(130deg,#edf1e9,#f9e6e8);display:flex;align-items:center;justify-content:center;font-size:62px}
-.photo img{width:100%;height:100%;object-fit:cover}
-.content{padding:22px}
-.category{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#738476}
-.content h3{margin:9px 0 12px;font-family:Georgia,serif;font-size:23px;font-weight:normal}
-.status{font-size:13px;margin-bottom:16px}
-.available{color:#40704e}
-.reserved{color:#986775}
-.btn{display:block;width:100%;text-align:center;background:var(--sage);color:white;text-decoration:none;border:0;border-radius:10px;padding:13px;font-size:15px;font-weight:bold;cursor:pointer}
-.btn:disabled{background:#c8c9c5;cursor:not-allowed}
-.notice{max-width:720px;margin:36px auto 0;padding:18px;background:#f6e8e9;border-radius:12px;line-height:1.6;text-align:center}
-footer{text-align:center;padding:28px;color:#66766a;font-size:13px}
-@media(max-width:520px){header{padding:48px 18px}.photo{height:170px}}
-</style>
-</head>
-<body>
-<header>
-<div class="eyebrow">Um novo lar, novos começos</div>
-<h1>Chá de Casa Nova<br>da Nádia</h1>
-<p>Com muito carinho, preparei uma listinha de presentes para essa nova fase. Sua presença, seu afeto e sua lembrança já fazem parte dessa história. ♡</p>
-</header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chá de Casa Nova da Nádia</title>
 
-<main>
-<h2>Lista de presentes ♡</h2>
-<p class="sub">Escolha um mimo para o novo lar e reserve com carinho!</p>
-<section class="grid" id="gifts"></section>
-<div class="notice">🎁 Reserve seu presente antes de comprar. Depois, você poderá acessar o link do TikTok Shop para realizar a compra.</div>
-</main>
+  <style>
+    :root {
+      --verde: #789382;
+      --verde-escuro: #405e4d;
+      --rosa: #f5dfe2;
+      --fundo: #fffaf6;
+      --texto: #35463c;
+    }
 
-<footer>Feito com carinho para a Nádia 🌿</footer>
+    * {
+      box-sizing: border-box;
+    }
 
-<script>
-const SUPABASE_URL = "https://fexlsduposnoannytbmo.supabase.co";
-const SUPABASE_KEY = "sb_publishable_86eGn8jzDlxDGDQu2xjcvQ_DtZan6mR";
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+    }
 
+    header {
+      text-align: center;
+      padding: 65px 18px 55px;
+      background: linear-gradient(145deg, #e3ede5, #f8e6e8);
+    }
 
-const grid = document.getElementById("gifts");
+    .eyebrow {
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
 
-async function carregarPresentes() {
-  grid.textContent = "Carregando presentes...";
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 8vw, 70px);
+      font-weight: normal;
+      margin: 16px 0;
+      color: var(--verde-escuro);
+    }
 
-  try {
-    const resposta = await fetch(
-   SUPABASE_URL + "/rest/v1/presentes?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado&order=id.asc",
-      {
-        headers: {
-          apikey: SUPABASE_KEY
-        }
+    header p {
+      max-width: 550px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 1040px;
+      margin: auto;
+      padding: 42px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 32px;
+    }
+
+    .sub {
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e5e9e2;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px #405e4d0d;
+    }
+
+    .photo {
+      height: 190px;
+      background: linear-gradient(130deg, #edf1e9, #f9e6e8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 62px;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content {
+      padding: 22px;
+    }
+
+    .category {
+      font-size: 12px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #738476;
+    }
+
+    .content h3 {
+      margin: 9px 0 12px;
+      font-family: Georgia, serif;
+      font-size: 23px;
+      font-weight: normal;
+    }
+
+    .status {
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .available {
+      color: #40704e;
+    }
+
+    .reserved {
+      color: #986775;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--verde);
+      color: white;
+      text-decoration: none;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:disabled {
+      background: #c8c9c5;
+      cursor: not-allowed;
+    }
+
+    .notice {
+      max-width: 720px;
+      margin: 36px auto 0;
+      padding: 18px;
+      background: #f6e8e9;
+      border-radius: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: #66766a;
+      font-size: 13px;
+    }
+
+    @media (max-width: 520px) {
+      header {
+        padding: 48px 18px;
       }
-    );
 
-    if (!resposta.ok) throw new Error("Erro ao carregar presentes");
+      .photo {
+        height: 170px;
+      }
+    }
+  </style>
+</head>
 
-    const presentes = await resposta.json();
-    grid.innerHTML = "";
+<body>
 
-    presentes.forEach(presente => {
+  <header>
+    <div class="eyebrow">Um novo lar, novos começos</div>
+
+    <h1>Chá de Casa Nova<br>da Nádia</h1>
+
+    <p>
+      Com muito carinho, preparei uma listinha de presentes
+      para essa nova fase. Sua presença, seu afeto e sua
+      lembrança já fazem parte dessa história. ♡
+    </p>
+  </header>
+
+  <main>
+    <h2>Lista de presentes ♡</h2>
+
+    <p class="sub">
+      Escolha um mimo para o novo lar e reserve com carinho!
+    </p>
+
+    <section class="grid" id="gifts"></section>
+
+    <div class="notice">
+      🎁 Escolha um presente e confirme sua reserva.
+      Os presentes já reservados ficam indisponíveis
+      para outros convidados.
+    </div>
+  </main>
+
+  <footer>
+    Feito com carinho para a Nádia 🌿
+  </footer>
+
+  <script>
+    // CONFIGURACAO DO SUPABASE
+
+    const SUPABASE_URL =
+      "https://fexlsduposnoannytbmo.supabase.co";
+
+    const SUPABASE_KEY =
+      "COLE_AQUI_SUA_CHAVE_PUBLICA";
+
+    const grid = document.getElementById("gifts");
+
+    // ACEITAR APENAS LINKS HTTPS
+
+    function linkSeguro(valor) {
+      if (typeof valor !== "string") {
+        return "";
+      }
+
+      try {
+        const url = new URL(valor);
+
+        if (url.protocol === "https:") {
+          return url.href;
+        }
+      } catch (erro) {
+        return "";
+      }
+
+      return "";
+    }
+
+    // CARREGAR PRESENTES
+
+    async function carregarPresentes() {
+      grid.textContent = "Carregando presentes...";
+
+      try {
+        const endereco =
+          SUPABASE_URL +
+          "/rest/v1/presentes" +
+          "?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado" +
+          "&order=id.asc";
+
+        const resposta = await fetch(endereco, {
+          method: "GET",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Accept": "application/json"
+          }
+        });
+
+        if (!resposta.ok) {
+          throw new Error(
+            "Erro ao carregar presentes: " + resposta.status
+          );
+        }
+
+        const presentes = await resposta.json();
+
+        grid.replaceChildren();
+
+        if (presentes.length === 0) {
+          grid.textContent =
+            "Nenhum presente cadastrado ainda.";
+          return;
+        }
+
+        presentes.forEach(function(presente) {
+          criarCartao(presente);
+        });
+
+      } catch (erro) {
+        console.error(erro);
+
+        grid.textContent =
+          "Não foi possível carregar os presentes. " +
+          "Verifique a conexão e tente novamente.";
+      }
+    }
+
+    // CRIAR CARTAO DO PRESENTE
+
+    function criarCartao(presente) {
       const card = document.createElement("article");
       card.className = "card";
 
       const foto = document.createElement("div");
       foto.className = "photo";
 
-      if (presente.imagem_url) {
-        const img = document.createElement("img");
-        img.src = presente.imagem_url;
-        img.alt = presente.nome;
-        foto.appendChild(img);
+      const enderecoImagem = linkSeguro(
+        presente.url_da_imagem
+      );
+
+      if (enderecoImagem) {
+        const imagem = document.createElement("img");
+        imagem.src = enderecoImagem;
+        imagem.alt = presente.nome || "Presente";
+        imagem.loading = "lazy";
+
+        imagem.onerror = function() {
+          foto.textContent = "🎁";
+        };
+
+        foto.appendChild(imagem);
       } else {
         foto.textContent = "🎁";
       }
@@ -94,80 +327,138 @@ async function carregarPresentes() {
 
       const categoria = document.createElement("div");
       categoria.className = "category";
-      categoria.textContent = presente.categoria;
+      categoria.textContent = presente.categoria || "Presente";
 
       const titulo = document.createElement("h3");
-      titulo.textContent = presente.nome;
+      titulo.textContent = presente.nome || "Presente";
 
       const status = document.createElement("div");
-      status.className = "status " + (presente.reservado ? "reserved" : "available");
-      status.textContent = presente.reservado ? "Já reservado 🎁" : "Disponível";
+      status.className = "status";
 
       const botao = document.createElement("button");
       botao.className = "btn";
-      botao.textContent = presente.reservado ? "Indisponível" : "Escolher presente";
-      botao.disabled = presente.reservado;
+      botao.type = "button";
 
-      botao.onclick = () => reservarPresente(presente);
+      if (presente.reservado) {
+        status.classList.add("reserved");
+        status.textContent = "🎁 Já reservado";
 
-      conteudo.append(categoria, titulo, status, botao);
-      card.append(foto, conteudo);
-      grid.appendChild(card);
-    });
+        botao.textContent = "Indisponível";
+        botao.disabled = true;
+      } else {
+        status.classList.add("available");
+        status.textContent = "✓ Disponível";
 
-  } catch (erro) {
-    grid.textContent = "Não foi possível carregar os presentes.";
-    console.error(erro);
-  }
-}
+        botao.textContent = "Escolher presente";
 
-async function reservarPresente(presente) {
-  if (!presente.link_tiktok) {
-    alert("O link de compra deste presente ainda não foi cadastrado.");
-    return;
-  }
-
-  if (!confirm(Deseja reservar ${presente.nome}?)) return;
-
-  const token = crypto.randomUUID();
-
-  try {
-    const resposta = await fetch(
-      ${SUPABASE_URL}/rest/v1/rpc/reservar_presente,
-      {
-        method: "POST",
-        headers: {
-          apikey: SUPABASE_KEY,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          p_id: presente.id,
-          p_token: token
-        })
+        botao.addEventListener("click", function() {
+          reservarPresente(presente, botao);
+        });
       }
-    );
 
-    if (!resposta.ok) throw new Error("Erro na reserva");
+      conteudo.appendChild(categoria);
+      conteudo.appendChild(titulo);
+      conteudo.appendChild(status);
 
-    const sucesso = await resposta.json();
+      const linkCompra = linkSeguro(
+        presente.link_tiktok
+      );
 
-    if (sucesso === true) {
-      localStorage.setItem("reserva_" + presente.id, token);
-      alert("Presente reservado com sucesso! Agora você será direcionado ao TikTok Shop.");
-      await carregarPresentes();
-      window.open(presente.link_tiktok, "_blank", "noopener,noreferrer");
-    } else {
-      alert("Esse presente já foi reservado por outra pessoa.");
+      if (linkCompra) {
+        const link = document.createElement("a");
+        link.className = "btn";
+        link.href = linkCompra;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Ver no TikTok Shop";
+
+        conteudo.appendChild(link);
+      }
+
+      conteudo.appendChild(botao);
+
+      card.appendChild(foto);
+      card.appendChild(conteudo);
+
+      grid.appendChild(card);
+    }
+
+    // RESERVAR PRESENTE
+
+    async function reservarPresente(presente, botao) {
+      const confirmado = confirm(
+        "Deseja reservar o presente: " +
+        presente.nome +
+        "?"
+      );
+
+      if (!confirmado) {
+        return;
+      }
+
+      botao.disabled = true;
+      botao.textContent = "Reservando...";
+
+      try {
+        const token = crypto.randomUUID();
+
+        const endereco =
+          SUPABASE_URL +
+          "/rest/v1/rpc/reservar_presente";
+
+        const resposta = await fetch(endereco, {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            p_id: presente.id,
+            p_token: token
+          })
+        });
+
+        if (!resposta.ok) {
+          throw new Error(
+            "Erro na reserva: " + resposta.status
+          );
+        }
+
+        const sucesso = await resposta.json();
+
+        if (sucesso === true) {
+          localStorage.setItem(
+            "reserva_" + presente.id,
+            token
+          );
+
+          alert(
+            "Presente reservado com sucesso! 💗"
+          );
+        } else {
+          alert(
+            "Este presente já foi reservado " +
+            "por outra pessoa."
+          );
+        }
+
+      } catch (erro) {
+        console.error(erro);
+
+        alert(
+          "Não foi possível concluir a reserva. " +
+          "Tente novamente."
+        );
+      }
+
       await carregarPresentes();
     }
 
-  } catch (erro) {
-    alert("Não foi possível concluir a reserva. Tente novamente.");
-    console.error(erro);
-  }
-}
+    // INICIAR O SITE
 
-carregarPresentes();
-</script>
+    carregarPresentes();
+  </script>
+
 </body>
 </html>
