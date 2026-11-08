@@ -1,465 +1,384 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chá de Casa Nova da Nádia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chá de Casa Nova da Nádia</title>
 
-  <style>
-    :root {
-      --verde: #789382;
-      --verde-escuro: #405e4d;
-      --rosa: #f5dfe2;
-      --fundo: #fffaf6;
-      --texto: #35463c;
-    }
+<style>
+:root {
+  --verde: #789382;
+  --escuro: #405e4d;
+  --fundo: #fffaf6;
+  --texto: #35463c;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--fundo);
-      color: var(--texto);
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+}
 
-    header {
-      text-align: center;
-      padding: 65px 18px 55px;
-      background: linear-gradient(145deg, #e3ede5, #f8e6e8);
-    }
+header {
+  text-align: center;
+  padding: 65px 18px 55px;
+  background: linear-gradient(145deg, #e3ede5, #f8e6e8);
+}
 
-    .eyebrow {
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-size: 12px;
-    }
+.eyebrow {
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
 
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(40px, 8vw, 70px);
-      font-weight: normal;
-      margin: 16px 0;
-      color: var(--verde-escuro);
-    }
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(40px, 8vw, 70px);
+  font-weight: normal;
+  margin: 16px 0;
+  color: var(--escuro);
+}
 
-    header p {
-      max-width: 550px;
-      margin: auto;
-      line-height: 1.7;
-    }
+header p {
+  max-width: 550px;
+  margin: auto;
+  line-height: 1.7;
+}
 
-    main {
-      max-width: 1040px;
-      margin: auto;
-      padding: 42px 20px;
-    }
+main {
+  max-width: 1040px;
+  margin: auto;
+  padding: 42px 20px;
+}
 
-    h2 {
-      text-align: center;
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: 32px;
-    }
+h2 {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: normal;
+}
 
-    .sub {
-      text-align: center;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
+.sub {
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-      gap: 22px;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 22px;
+}
 
-    .card {
-      background: white;
-      border: 1px solid #e5e9e2;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 8px 28px #405e4d0d;
-    }
+.card {
+  background: white;
+  border: 1px solid #e5e9e2;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px #405e4d0d;
+}
 
-    .photo {
-      height: 190px;
-      background: linear-gradient(130deg, #edf1e9, #f9e6e8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 62px;
-    }
+.photo {
+  height: 190px;
+  background: linear-gradient(130deg, #edf1e9, #f9e6e8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 62px;
+}
 
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .content {
-      padding: 22px;
-    }
+.content { padding: 22px; }
 
-    .category {
-      font-size: 12px;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: #738476;
-    }
+.category {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: #738476;
+}
 
-    .content h3 {
-      margin: 9px 0 12px;
-      font-family: Georgia, serif;
-      font-size: 23px;
-      font-weight: normal;
-    }
+.content h3 {
+  margin: 9px 0 12px;
+  font-family: Georgia, serif;
+  font-size: 23px;
+  font-weight: normal;
+}
 
-    .status {
-      font-size: 13px;
-      margin-bottom: 16px;
-    }
+.status {
+  font-size: 13px;
+  margin-bottom: 16px;
+}
 
-    .available {
-      color: #40704e;
-    }
+.available { color: #40704e; }
+.reserved { color: #986775; }
 
-    .reserved {
-      color: #986775;
-    }
+.btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--verde);
+  color: white;
+  text-decoration: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 13px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: var(--verde);
-      color: white;
-      text-decoration: none;
-      border: 0;
-      border-radius: 10px;
-      padding: 13px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+.btn:disabled {
+  background: #c8c9c5;
+  cursor: not-allowed;
+}
 
-    .btn:disabled {
-      background: #c8c9c5;
-      cursor: not-allowed;
-    }
+.notice {
+  max-width: 720px;
+  margin: 36px auto 0;
+  padding: 18px;
+  background: #f6e8e9;
+  border-radius: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
 
-    .notice {
-      max-width: 720px;
-      margin: 36px auto 0;
-      padding: 18px;
-      background: #f6e8e9;
-      border-radius: 12px;
-      line-height: 1.6;
-      text-align: center;
-    }
+footer {
+  text-align: center;
+  padding: 28px;
+  color: #66766a;
+  font-size: 13px;
+}
 
-    footer {
-      text-align: center;
-      padding: 28px;
-      color: #66766a;
-      font-size: 13px;
-    }
-
-    @media (max-width: 520px) {
-      header {
-        padding: 48px 18px;
-      }
-
-      .photo {
-        height: 170px;
-      }
-    }
-  </style>
+@media(max-width:520px) {
+  header { padding: 48px 18px; }
+  .photo { height: 170px; }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="eyebrow">Um novo lar, novos começos</div>
+<header>
+  <div class="eyebrow">Um novo lar, novos começos</div>
+  <h1>Chá de Casa Nova<br>da Nádia</h1>
+  <p>
+    Com muito carinho, preparei uma listinha de presentes
+    para essa nova fase. Sua presença, seu afeto e sua
+    lembrança já fazem parte dessa história. ♡
+  </p>
+</header>
 
-    <h1>Chá de Casa Nova<br>da Nádia</h1>
+<main>
+  <h2>Lista de presentes ♡</h2>
+  <p class="sub">
+    Escolha um mimo para o novo lar e reserve com carinho!
+  </p>
 
-    <p>
-      Com muito carinho, preparei uma listinha de presentes
-      para essa nova fase. Sua presença, seu afeto e sua
-      lembrança já fazem parte dessa história. ♡
-    </p>
-  </header>
+  <section class="grid" id="gifts">
+    Carregando presentes...
+  </section>
 
-  <main>
-    <h2>Lista de presentes ♡</h2>
+  <div class="notice">
+    🎁 Escolha seu presente e confirme a reserva.
+    Um presente reservado fica indisponível
+    para outros convidados.
+  </div>
+</main>
 
-    <p class="sub">
-      Escolha um mimo para o novo lar e reserve com carinho!
-    </p>
+<footer>Feito com carinho para a Nádia 🌿</footer>
 
-    <section class="grid" id="gifts"></section>
+<script>
+"use strict";
 
-    <div class="notice">
-      🎁 Escolha um presente e confirme sua reserva.
-      Os presentes já reservados ficam indisponíveis
-      para outros convidados.
-    </div>
-  </main>
+// COLOQUE SUA CHAVE PUBLICA AQUI
+const SUPABASE_URL = "https://fexlsduposnoannytbmo.supabase.co";
+const SUPABASE_KEY = "COLE_AQUI_SUA_CHAVE_PUBLICA";
 
-  <footer>
-    Feito com carinho para a Nádia 🌿
-  </footer>
+const grid = document.getElementById("gifts");
 
-  <script>
-    // CONFIGURACAO DO SUPABASE
+function urlSegura(valor) {
+  if (!valor || typeof valor !== "string") return "";
 
-    const SUPABASE_URL =
-      "https://fexlsduposnoannytbmo.supabase.co";
+  try {
+    const url = new URL(valor);
+    return url.protocol === "https:" ? url.href : "";
+  } catch {
+    return "";
+  }
+}
 
-    const SUPABASE_KEY =
-      "sb_publishable_86eGn8jzDlxDGDQu2xjcvQ_DtZan6mR
-";
+async function carregarPresentes() {
+  grid.textContent = "Carregando presentes...";
 
-    const grid = document.getElementById("gifts");
+  try {
+    const url = SUPABASE_URL +
+      "/rest/v1/presentes" +
+      "?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado" +
+      "&order=id.asc";
 
-    // ACEITAR APENAS LINKS HTTPS
-
-    function linkSeguro(valor) {
-      if (typeof valor !== "string") {
-        return "";
+    const resposta = await fetch(url, {
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Accept": "application/json"
       }
+    });
 
-      try {
-        const url = new URL(valor);
-
-        if (url.protocol === "https:") {
-          return url.href;
-        }
-      } catch (erro) {
-        return "";
-      }
-
-      return "";
+    if (!resposta.ok) {
+      throw new Error("Erro HTTP " + resposta.status);
     }
 
-    // CARREGAR PRESENTES
+    const presentes = await resposta.json();
+    grid.replaceChildren();
 
-    async function carregarPresentes() {
-      grid.textContent = "Carregando presentes...";
-
-      try {
-        const endereco =
-          SUPABASE_URL +
-          "/rest/v1/presentes" +
-          "?select=id,nome,categoria,url_da_imagem,link_tiktok,reservado" +
-          "&order=id.asc";
-
-        const resposta = await fetch(endereco, {
-          method: "GET",
-          headers: {
-            "apikey": SUPABASE_KEY,
-            "Accept": "application/json"
-          }
-        });
-
-        if (!resposta.ok) {
-          throw new Error(
-            "Erro ao carregar presentes: " + resposta.status
-          );
-        }
-
-        const presentes = await resposta.json();
-
-        grid.replaceChildren();
-
-        if (presentes.length === 0) {
-          grid.textContent =
-            "Nenhum presente cadastrado ainda.";
-          return;
-        }
-
-        presentes.forEach(function(presente) {
-          criarCartao(presente);
-        });
-
-      } catch (erro) {
-        console.error(erro);
-
-        grid.textContent =
-          "Não foi possível carregar os presentes. " +
-          "Verifique a conexão e tente novamente.";
-      }
+    if (presentes.length === 0) {
+      grid.textContent = "Nenhum presente cadastrado.";
+      return;
     }
 
-    // CRIAR CARTAO DO PRESENTE
+    presentes.forEach(criarCartao);
 
-    function criarCartao(presente) {
-      const card = document.createElement("article");
-      card.className = "card";
+  } catch (erro) {
+    console.error("Erro ao carregar:", erro);
+    grid.textContent =
+      "Não foi possível carregar os presentes. Tente atualizar a página.";
+  }
+}
 
-      const foto = document.createElement("div");
-      foto.className = "photo";
+function criarCartao(presente) {
+  const card = document.createElement("article");
+  card.className = "card";
 
-      const enderecoImagem = linkSeguro(
-        presente.url_da_imagem
-      );
+  const foto = document.createElement("div");
+  foto.className = "photo";
 
-      if (enderecoImagem) {
-        const imagem = document.createElement("img");
-        imagem.src = enderecoImagem;
-        imagem.alt = presente.nome || "Presente";
-        imagem.loading = "lazy";
+  const imagemUrl = urlSegura(presente.url_da_imagem);
 
-        imagem.onerror = function() {
-          foto.textContent = "🎁";
-        };
+  if (imagemUrl) {
+    const img = document.createElement("img");
+    img.src = imagemUrl;
+    img.alt = presente.nome || "Presente";
+    img.loading = "lazy";
+    img.onerror = function() {
+      foto.replaceChildren();
+      foto.textContent = "🎁";
+    };
+    foto.appendChild(img);
+  } else {
+    foto.textContent = "🎁";
+  }
 
-        foto.appendChild(imagem);
-      } else {
-        foto.textContent = "🎁";
+  const content = document.createElement("div");
+  content.className = "content";
+
+  const categoria = document.createElement("div");
+  categoria.className = "category";
+  categoria.textContent = presente.categoria || "Presente";
+
+  const nome = document.createElement("h3");
+  nome.textContent = presente.nome || "Presente";
+
+  const status = document.createElement("div");
+  status.className = "status";
+
+  const botao = document.createElement("button");
+  botao.type = "button";
+  botao.className = "btn";
+
+  if (presente.reservado) {
+    status.classList.add("reserved");
+    status.textContent = "🎁 Já reservado";
+    botao.textContent = "Indisponível";
+    botao.disabled = true;
+  } else {
+    status.classList.add("available");
+    status.textContent = "✓ Disponível";
+    botao.textContent = "Escolher presente";
+
+    botao.addEventListener("click", function() {
+      reservarPresente(presente, botao);
+    });
+  }
+
+  content.append(categoria, nome, status);
+
+  const link = urlSegura(presente.link_tiktok);
+
+  if (link) {
+    const comprar = document.createElement("a");
+    comprar.className = "btn";
+    comprar.href = link;
+    comprar.target = "_blank";
+    comprar.rel = "noopener noreferrer";
+    comprar.textContent = "Ver no TikTok Shop";
+    content.appendChild(comprar);
+  }
+
+  content.appendChild(botao);
+  card.append(foto, content);
+  grid.appendChild(card);
+}
+
+async function reservarPresente(presente, botao) {
+  const confirmar = confirm(
+    "Deseja reservar: " + presente.nome + "?"
+  );
+
+  if (!confirmar) return;
+
+  botao.disabled = true;
+  botao.textContent = "Reservando...";
+
+  try {
+    const token = crypto.randomUUID();
+
+    const resposta = await fetch(
+      SUPABASE_URL + "/rest/v1/rpc/reservar_presente",
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          p_id: presente.id,
+          p_token: token
+        })
       }
+    );
 
-      const conteudo = document.createElement("div");
-      conteudo.className = "content";
-
-      const categoria = document.createElement("div");
-      categoria.className = "category";
-      categoria.textContent = presente.categoria || "Presente";
-
-      const titulo = document.createElement("h3");
-      titulo.textContent = presente.nome || "Presente";
-
-      const status = document.createElement("div");
-      status.className = "status";
-
-      const botao = document.createElement("button");
-      botao.className = "btn";
-      botao.type = "button";
-
-      if (presente.reservado) {
-        status.classList.add("reserved");
-        status.textContent = "🎁 Já reservado";
-
-        botao.textContent = "Indisponível";
-        botao.disabled = true;
-      } else {
-        status.classList.add("available");
-        status.textContent = "✓ Disponível";
-
-        botao.textContent = "Escolher presente";
-
-        botao.addEventListener("click", function() {
-          reservarPresente(presente, botao);
-        });
-      }
-
-      conteudo.appendChild(categoria);
-      conteudo.appendChild(titulo);
-      conteudo.appendChild(status);
-
-      const linkCompra = linkSeguro(
-        presente.link_tiktok
-      );
-
-      if (linkCompra) {
-        const link = document.createElement("a");
-        link.className = "btn";
-        link.href = linkCompra;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = "Ver no TikTok Shop";
-
-        conteudo.appendChild(link);
-      }
-
-      conteudo.appendChild(botao);
-
-      card.appendChild(foto);
-      card.appendChild(conteudo);
-
-      grid.appendChild(card);
+    if (!resposta.ok) {
+      throw new Error("Erro HTTP " + resposta.status);
     }
 
-    // RESERVAR PRESENTE
+    const sucesso = await resposta.json();
 
-    async function reservarPresente(presente, botao) {
-      const confirmado = confirm(
-        "Deseja reservar o presente: " +
-        presente.nome +
-        "?"
-      );
-
-      if (!confirmado) {
-        return;
-      }
-
-      botao.disabled = true;
-      botao.textContent = "Reservando...";
-
-      try {
-        const token = crypto.randomUUID();
-
-        const endereco =
-          SUPABASE_URL +
-          "/rest/v1/rpc/reservar_presente";
-
-        const resposta = await fetch(endereco, {
-          method: "POST",
-          headers: {
-            "apikey": SUPABASE_KEY,
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            p_id: presente.id,
-            p_token: token
-          })
-        });
-
-        if (!resposta.ok) {
-          throw new Error(
-            "Erro na reserva: " + resposta.status
-          );
-        }
-
-        const sucesso = await resposta.json();
-
-        if (sucesso === true) {
-          localStorage.setItem(
-            "reserva_" + presente.id,
-            token
-          );
-
-          alert(
-            "Presente reservado com sucesso! 💗"
-          );
-        } else {
-          alert(
-            "Este presente já foi reservado " +
-            "por outra pessoa."
-          );
-        }
-
-      } catch (erro) {
-        console.error(erro);
-
-        alert(
-          "Não foi possível concluir a reserva. " +
-          "Tente novamente."
-        );
-      }
-
-      await carregarPresentes();
+    if (sucesso === true) {
+      localStorage.setItem("reserva_" + presente.id, token);
+      alert("Presente reservado com sucesso! 💗");
+    } else {
+      alert("Este presente já foi reservado por outra pessoa.");
     }
 
-    // INICIAR O SITE
+  } catch (erro) {
+    console.error("Erro na reserva:", erro);
+    alert("Não foi possível concluir a reserva.");
+  }
 
-    carregarPresentes();
-  </script>
+  await carregarPresentes();
+}
+
+carregarPresentes();
+</script>
 
 </body>
 </html>
